@@ -57,8 +57,8 @@ EnhancedVolcano(res.df, x = "log2FoldChange", y = "padj", lab = rownames(res.df)
 # 複数の遺伝子をピックアップして見る
 
 #pickup <- c("SALL4", "LIN28A", "TRIM71", "IRX3", "FGF10", "HOXD9", "MEIS2", "TBX5", "SALL1",
-            "MSX1", "TSHZ2", "ZBTB16", "PRDM16", "ETV4", "TFAP2A", "MSX2", "LHX9", "DUSP6", "AXIN2",
-            "ACTC1", "GATA4", "FOXF1", "HAND1", "KRT8", "BMP5", "TAGLN")
+#            "MSX1", "TSHZ2", "ZBTB16", "PRDM16", "ETV4", "TFAP2A", "MSX2", "LHX9", "DUSP6", "AXIN2",
+#            "ACTC1", "GATA4", "FOXF1", "HAND1", "KRT8", "BMP5", "TAGLN")
 
 #EnhancedVolcano(res.df, x = "log2FoldChange", y = "padj", lab = res.df$symbol,
 #                pCutoff = 0, FCcutoff = 0, selectLab = pickup, drawConnectors = TRUE, max.overlaps = Inf)
