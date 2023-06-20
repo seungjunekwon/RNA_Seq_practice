@@ -4,7 +4,7 @@
 # パッケージを読み込む（ないものはGoogleに " パッケージ名 install " と調べて出てくるコードをコピペ・実行することでインストール）
 
 library(DESeq2) # 使うメインパッケージ
-library(org.Gg.eg.db) # 遺伝子IDに遺伝子名をつけるためのパッケージ
+library(org.Gg.eg.db) # 遺伝子IDに遺伝子名をつけるためのパッケージ; ~galGal6をRef.Genomeで使ったらとりあえずこれはなしで
 library(EnhancedVolcano) # ボルケーノプロットを作るパッケージ
 
 # データを読み込む
@@ -28,14 +28,16 @@ normCounts <- counts(ddsDE, normalized = T)
 # DEG解析の結果ファイル（DESeq.csv）を作成
 res <- results(ddsDE, alpha = 0.05)
 res.df <- as.data.frame(res)
-res.df$symbol <- mapIds(org.Gg.eg.db, keys = rownames(res.df),keytype = "ENSEMBL", column = "SYMBOL")
+res.df$symbol <- mapIds(org.Gg.eg.db, keys = rownames(res.df),keytype = "ENSEMBL", column = "SYMBOL") # ~galGal6をRef.Genomeで使ったらとりあえずこれはなしで
 res.dfO <- res.df[order(res.df$padj),]
 write.csv(res.dfO, "DESeq.csv")
 
 # 正規化の結果ファイル（NormCounts.csv）を作成
 normCounts.df <- as.data.frame(normCounts)
-normCounts.df$symbol <- mapIds(org.Gg.eg.db, keys = rownames(normCounts.df),keytype = "ENSEMBL", column = "SYMBOL")
+normCounts.df$symbol <- mapIds(org.Gg.eg.db, keys = rownames(normCounts.df),keytype = "ENSEMBL", column = "SYMBOL") # ~galGal6をRef.Genomeで使ったらとりあえずこれはなしで
 write.csv(normCounts.df, "NormCounts.csv")
+
+#### 以下はgalGal7~をRef.Genomeで使った場合；~galGal6を使った人はvolcano.Rで！
 
 # 基本的なボルケーノプロットを作成（色やサイズなど、詳しい調整の仕方は Google " EnhancedVolcano "）
 EnhancedVolcano(res.df, x = "log2FoldChange", y = "padj", lab = res.df$symbol,
