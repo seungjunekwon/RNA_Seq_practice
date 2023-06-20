@@ -41,7 +41,7 @@ write.csv(normCounts.df, "NormCounts.csv")
 EnhancedVolcano(res.df, x = "log2FoldChange", y = "padj", lab = rownames(res.df),
                 pCutoff = 1e-4, FCcutoff = 1) # 閾値の設定
 
-#### 以下はgalGal7~をRef.Genomeで使った場合；~galGal6を使った人はvolcano.Rで！
+#### 以下はgalGal7~をRef.Genomeで使った場合；~galGal6を使った人は７回目のスライドの隠されたスライド参考
 
 # 基本的なボルケーノプロットを作成（色やサイズなど、詳しい調整の仕方は Google " EnhancedVolcano "）
 #EnhancedVolcano(res.df, x = "log2FoldChange", y = "padj", lab = res.df$symbol,
